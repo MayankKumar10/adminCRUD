@@ -1,8 +1,8 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Home } from "./Home";
 import { AddUser } from "./AddUser";
 import { EditUser } from "./EditUser";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { GlobalProvider } from "../context/GlobalState";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -19,7 +19,7 @@ function Site() {
       <GlobalProvider id="table1" >
         <Router>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/table" component={Home} />
             <Route path="/add" component={AddUser} />
             <Route path="/edit/:id" component={EditUser} />
           </Switch>
@@ -32,7 +32,7 @@ function Site() {
       <GlobalProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/table" component={Home} />
             <Route path="/add" component={AddUser} />
             <Route path="/edit/:id" component={EditUser} />
           </Switch>

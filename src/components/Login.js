@@ -7,6 +7,7 @@ function Login() {
   const [showResults, setShowResults] = useState(false)
   
   const onClick = () => setShowResults(true)
+
   
 return (
     
@@ -19,16 +20,51 @@ return (
 }
 
 
-const Results = () =>(
+const Results = () =>{
+  const [showResults1, setShowResults1] = useState(true)
+  const [showMessage, setShowMessage] = useState(false)
+  
+  var myInput = document.getElementById("psw");
 
+  var modal = document.querySelector("#id01");
+  
+  const onClickOne = () => setShowResults1(false)
+
+  const change = (e)=> {
+
+    e.preventDefaults();
+
+    var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    alert(`Password doesn't have minimum number of LowerCase Letters `);
+  }
+  
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    alert(`Password doesn't have minimum number of UpperCase Letter `);
+  }
+
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    alert(`Password doesn't have minimum number of integers `);
+  }
+  
+  if(myInput.value.length >= 8) {
+   alert('Password Length is smaller than 8'); 
+  
+     }
+  }
+  
+return(
     <div id="results" className="search-results" >
+
 
 <div id="id01" className="modal">
   
   <form className="modal-content animate" action="/Site" method="post">
     
     <div className="imgcontainer">
-      <span onclick={document.querySelector('#id01').style.display='block'} className="close" title="Close Modal">&times;</span>
+      <span onclick={onClickOne} className="close" title="Close Modal">&times;</span>
       <img src="https://semantic-ui.com/images/avatar/large/steve.jpg" alt="Avatar" className="avatar" />
     </div>
 
@@ -40,7 +76,7 @@ const Results = () =>(
 
       <label for="psw"> <b>Password</b> </label>
 
-      <input type="password" placeholder="Enter Password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
+      <input type="password" onChange={(e) => { change()}} placeholder="Enter Password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
         
       <input type="submit" value="Submit" />
       
@@ -49,25 +85,18 @@ const Results = () =>(
     </div>
 
     <div className="container" style={{backgroundColor:"#f1f1f1"}}>
-      <button type="button" onClick={document.querySelector('#id01').style.display='block'} className="cancelbtn">Cancel</button>
+      <button type="button" onClick={onClickOne} className="cancelbtn">Cancel</button>
       <span className="psw">Forgot <a href="#">password?</a></span>
     </div>
     
-    <div id="message">
-        <h3>Password must contain the following:</h3>
-        <p id="letter" className="invalid">A <b>lowercase</b> letter</p>
-        <p id="capital" className="invalid">A <b>capital (uppercase)</b> letter</p>
-        <p id="number" className="invalid">A <b>number</b></p>
-        <p id="length" className="invalid">Minimum <b>8 characters</b></p>
-    </div>
-
     
     </form>
 
     </div>
 
+
     </div>
 
-)
+)}
 
 export default Login

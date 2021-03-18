@@ -1,7 +1,7 @@
 var modal = document.getElementById('id01');
 
 window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target === modal) {
         modal.style.display = "none";
     }
 }
@@ -12,47 +12,26 @@ var capital = document.getElementById("capital");
 var number = document.getElementById("number");
 var length = document.getElementById("length");
 
-myInput.onfocus = function() {
-  document.getElementById("message").style.display = "block";
-}
 
-myInput.onblur = function() {
-  document.getElementById("message").style.display = "none";
-}
 
-myInput.onkeyup = function() {
+
   var lowerCaseLetters = /[a-z]/g;
   if(myInput.value.match(lowerCaseLetters)) {  
-    letter.classList.remove("invalid");
-    letter.classList.add("valid");
-  } else {
-    letter.classList.remove("valid");
-    letter.classList.add("invalid");
+    alert(`Password doesn't have minimum number of LowerCase Letters `);
   }
   
   var upperCaseLetters = /[A-Z]/g;
   if(myInput.value.match(upperCaseLetters)) {  
-    capital.classList.remove("invalid");
-    capital.classList.add("valid");
-  } else {
-    capital.classList.remove("valid");
-    capital.classList.add("invalid");
+    alert(`Password doesn't have minimum number of UpperCase Letter `);
   }
 
   var numbers = /[0-9]/g;
   if(myInput.value.match(numbers)) {  
-    number.classList.remove("invalid");
-    number.classList.add("valid");
-  } else {
-    number.classList.remove("valid");
-    number.classList.add("invalid");
+    alert(`Password doesn't have minimum number of integers `);
   }
   
   if(myInput.value.length >= 8) {
-    length.classList.remove("invalid");
-    length.classList.add("valid");
-  } else {
-    length.classList.remove("valid");
-    length.classList.add("invalid");
-  }
-}
+   alert('Password Length is smaller than 8'); 
+  
+     }
+
